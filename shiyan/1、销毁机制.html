@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+    function fn(){
+        var i = 10;
+        return function (n){
+            console.log(n + (++i));//i++先取出i再加1；++i先加1再取出i
+        }
+    }
+    var f = fn();
+    f(10);//-->21
+    f(20);//-->32
+    fn()(10);//-->21
+    fn()(20);//-->31
+
+    function fn1(i){
+        return function (n){
+            console.log(n + (i++));//i++先取出i再加1；++i先加1再取出i
+        }
+    }
+    var f = fn1(13);
+    f(12);//-->25
+    f(14);//-->28
+    fn1(15)(12);//-->27
+    fn1(16)(13);//-->29
+
+    var n=0;
+    function fnnn(){
+        n=1;
+    }
+    fnnn();
+    console.log(n);//->1
+
+    var m=0;
+    function fnm(m){
+        m=1;
+    }
+    fnm();
+    console.log(m);//->0
+//思考题：用闭包作用域的方式实现选项卡循环绑定事件的处理
+
+
+</script>
+</body>
+</html>

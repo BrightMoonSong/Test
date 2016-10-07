@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>闭包</title>
+</head>
+<body>
+<ul id="list">
+    <li>第1条记录</li>
+    <li>第2条记录</li>
+    <li>第3条记录</li>
+    <li>第4条记录</li>
+    <li>第5条记录</li>
+    <li>第6条记录</li>
+</ul>
+<script type="text/javascript">
+    function tt(nob) {
+        this.clickFunc = function() {
+            alert("这是第" + (nob + 1) + "记录");
+        }
+    }
+    var list_obj = document.getElementById("list").getElementsByTagName("li"); //获取list下面的所有li的对象数组
+    for (var i = 0; i<= list_obj.length; i++){
+        console.log(list_obj[i])
+        list_obj[i].onmousemove = function(){
+            this.style.backgroundColor = "#cdcdcd";
+        }
+        list_obj[i].onmouseout = function() {
+            this.style.backgroundColor = "#FFFFFF";
+        }
+        //list_obj[i].onclick = function() {
+        //  alert("这是第" + i + "记录"); //不能正常获取 alert出来的都是：“这是第6记录”
+        //}
+        var col = new tt(i); //调用tt函数
+        list_obj[i].onclick = col.clickFunc; //执行clickFunc函数
+    }
+</script>
+</body>
+</html>

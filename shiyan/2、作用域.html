@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+    //当注册事件结束后，i的值为4，当点击按钮时，事件函数即function(){ alert("Button"+i);}这个匿名函数中没有i，根据作用域链，所以到buttonInit函数中找，此时i的值为4，所以弹出”button4“。
+    function buttonInit() {
+        for (var i = 1; i < 4; i++) {
+            var b = document.getElementById("button" + i);
+            b.addEventListener("click", function () {
+                alert("Button" + i);
+            }, false);
+        }
+    }
+    window.onload = buttonInit;
+</script>
+
+<button id="button1">Button1</button>
+<button id="button2">Button2</button>
+<button id="button3">Button3</button>
+</body>
+</html>
